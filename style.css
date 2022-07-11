@@ -84,6 +84,7 @@ header {
     position: absolute;
     min-width: 100%;
     min-height: 100%;
+    max-width: 100%;
     background-color: transparent;
     font-size: 5rem;
     cursor: default;
