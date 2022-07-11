@@ -61,24 +61,35 @@ function draw() {
 
     inputs[0][0] === undefined ? '':inputs[0][0]
 
+    selected = ['', '', '', '']
+    if (index == 0) {
+        selected[Math.min(inputs[0].length, 3)] = 'selected';
+    }
+
     let top = `
     <div class="row top-bottom">
-        <div class="block">${inputs[0][0] === undefined ? ' ':inputs[0][0]}</div>
-        <div class="block">${inputs[0][1] === undefined ? ' ':inputs[0][1]}</div>
-        <div class="block">${inputs[0][2] === undefined ? ' ':inputs[0][2]}</div>
-        <div class="block">${inputs[0][3] === undefined ? ' ':inputs[0][3]}</div>
+        <div class="block ${selected[0]}">${inputs[0][0] === undefined ? ' ':inputs[0][0]}</div>
+        <div class="block ${selected[1]}">${inputs[0][1] === undefined ? ' ':inputs[0][1]}</div>
+        <div class="block ${selected[2]}">${inputs[0][2] === undefined ? ' ':inputs[0][2]}</div>
+        <div class="block ${selected[3]}">${inputs[0][3] === undefined ? ' ':inputs[0][3]}</div>
     </div>
     `
     flag = "";
     if (result.length > 0) {
         flag = "given"
     }
+
+    selected = ['', '', '', '']
+    if (index == 1) {
+        selected[Math.min(inputs[1].length, 3)] = 'selected';
+    }
+
     let bottom = `
     <div class="row top-bottom">
-        <div class="block ${flag}">${inputs[1][0] === undefined ? ' ':inputs[1][0]}</div>
-        <div class="block ${flag}">${inputs[1][1] === undefined ? ' ':inputs[1][1]}</div>
-        <div class="block ${flag}">${inputs[1][2] === undefined ? ' ':inputs[1][2]}</div>
-        <div class="block ${flag}">${inputs[1][3] === undefined ? ' ':inputs[1][3]}</div>
+        <div class="block ${selected[0]} ${flag}">${inputs[1][0] === undefined ? ' ':inputs[1][0]}</div>
+        <div class="block ${selected[1]} ${flag}">${inputs[1][1] === undefined ? ' ':inputs[1][1]}</div>
+        <div class="block ${selected[2]} ${flag}">${inputs[1][2] === undefined ? ' ':inputs[1][2]}</div>
+        <div class="block ${selected[3]} ${flag}">${inputs[1][3] === undefined ? ' ':inputs[1][3]}</div>
     </div>
     `
     document.getElementById("solver").innerHTML = top + bottom;
@@ -147,10 +158,17 @@ function sortedIndex(array, value) {
 
 
 function fromTo(fromWord, toWord) {
+    let ret =  iterateThrough(fromWord, toWord);
+    if (ret.length == 0) {
+        return iterateThrough(toWord, fromWord).reverse();
+    }
+    return ret;
+}
+
+function iterateThrough(fromWord, toWord) {
     let list = [[0, [fromWord]]];
     let iter = 0
-    while (list.length > 0 && iter < 1000){
-        console.log(iter);
+    while (list.length > 0 && iter < 1500){
         curr = list.pop()[1];
         poss = possible(curr[curr.length-1]);
         let ret = [];

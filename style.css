@@ -35,16 +35,16 @@ h1 {
 }
 
 .border {
-    border: 1px solid rgb(211, 211, 211);
+    border: 2px solid rgb(211, 211, 211);
     background: white;
-    width: calc(3rem - 2px);
-    height: calc(3rem - 2px);
+    width: calc(3rem - 4px);
+    height: calc(3rem - 4px);
 }
 
 .changed {
-    border: 1px solid black;
-    width: calc(3rem - 2px);
-    height: calc(3rem - 2px);
+    border: 2px solid black;
+    width: calc(3rem - 4px);
+    height: calc(3rem - 4px);
 }
 
 .matching {
@@ -54,6 +54,12 @@ h1 {
 .given {
     background-color: rgb(55, 126, 34);
     color: white;
+}
+
+.selected {
+    border: 2px solid blue;
+    width: calc(3rem - 4px);
+    height: calc(3rem - 4px);
 }
 
 html, 
