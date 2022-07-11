@@ -102,4 +102,5 @@ input {
 
 input:focus-visible {
     outline: none;
+    text-indent: -9999em;
 }
