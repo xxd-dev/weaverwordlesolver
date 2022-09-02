@@ -5,13 +5,20 @@ the game is a "word ladder" game.
 you have to weave your way from the strating word to the ending word. each word inbetween can only change 1 letter from the word above.
 
 ## FAQ
-### I can't connect 2 words?
-if this happens with an actual game, please open an issue with the words that don't work. I don't know if I am using the same dictionary as the original games, so that might cause problems. If this happens with words you have chosen, the problem could be one of these two:
-1. one of the words does not exist and no connection is possible
-2. one of the words is a "loner" that has no connecting words, meaning that it can't be reached
+### how does the game work?
+check out the tutorials on [wordwormdormdork.com](http://wordwormdormdork.com/) or [weaverwordle.com](http://weaverwordle.com/), they have a very comprihelsible explanation.
+
+### why can't I connect 2 words?
+sadly, not all words can be connected. some words have no connections at all (like `envy`, or `iglu`) and other words are part of only a small group (like `icon, iron, ikon` or `oxid, oxim`). if this happens during a real game though (where a solution must be present), please open an issue. 
+
+### why does the game say there is a shorter connection?
+if this happens, it likely is an issue with the search algorithm. please open an issue if you find a case, where the calculation is wrong. I will look into it as soon as I find the time.
+
 ### What is the longest distance between 2 words?
-I have not tested this conclusively, but I think "unau" to "quey" (19 total words) is a good contender. try yourself, if you can find longer weaves!
+This is a really interestig problem to solve, because the computation neccessary to connect every word with each other grows large very quickly. the answer is 17 steps! the paths include `unau -> whoa`, `unau -> atom`, `unau -> inch`, and a few more. unau is a type of sloth by the way, and yes it is part of every of these longest paths.
+
 ### How does this work?
-in the code, there is a list of all possible words. While searching, we do a bidirectional BFS, meaning a breadth-first search from both ends of the weave until we meet in the middle and find a valid path from one to the other. due to the paths having no weights, and the branching nature of the graph, this is a really fast and efficient approach. 
+in the code, there is a list of all possible words. While searching, we do a bidirectional BFS, meaning a breadth-first search from both ends of the weave until we meet in the middle and find a valid path from one to the other. due to the paths having no weights, and the branching nature of the graph, this is a really fast and efficient approach.
+
 ### why are you ruining the game by giving out the solution?
-I want to give all the people that don't have english as their native language a chance to get to the optimal score too.
+because I'm better at coding than I am at english word games.
